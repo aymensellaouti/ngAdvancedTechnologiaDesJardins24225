@@ -8,9 +8,6 @@ import { AdminComponent } from "./templates/admin/admin.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { NF404Component } from "./components/nf404/nf404.component";
 
-import { AddCvComponent } from "./cv/add-cv/add-cv.component";
-import { CvComponent } from "./cv/cv/cv.component";
-import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
 
 const routes: Route[] = [

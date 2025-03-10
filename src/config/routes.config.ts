@@ -1,7 +1,8 @@
 export const APP_ROUTES = {
   cv: 'cv',
   login: 'login',
-  addCv: 'cv/add',
-  detailsCv:`cv/:id`,
+  addCv: 'add',
+  detailsCv:`:id`,
+  master: 'list',
   todo: 'todo'
 };

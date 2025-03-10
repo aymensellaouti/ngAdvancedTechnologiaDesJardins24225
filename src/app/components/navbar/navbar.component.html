@@ -11,7 +11,9 @@
           routerLinkActive="active text-primary">Home</a>
         <a class="nav-link" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['cv']"
           routerLinkActive="active text-primary">Cv</a>
-        <a *ngIf="authService.isAuthenticated()" class="nav-link" [routerLink]="['cv/add']"
+          <a class="nav-link"  [routerLink]="['cv','list']"
+          routerLinkActive="active text-primary">Master Detail</a>
+        <a *ngIf="authService.isAuthenticated()" class="nav-link" [routerLink]="['cv','add']"
           routerLinkActive="active text-primary">Add Cv</a>
         <a class="nav-link" [routerLink]="['todo']" routerLinkActive="active text-primary">Todo</a>
         <a class="nav-link" [routerLink]="['word']" routerLinkActive="active text-primary">Word</a>

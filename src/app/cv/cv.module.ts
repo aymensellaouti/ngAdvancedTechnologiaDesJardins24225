@@ -12,6 +12,7 @@ import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { CvCardComponent } from './cv-card/cv-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoModule } from '../todo/todo.module';
+import { MasterDetailComponent } from './master-detail/master-detail.component';
 
 
 
@@ -26,6 +27,7 @@ import { TodoModule } from '../todo/todo.module';
     EmbaucheComponent,
     DefaultImagePipe,
     AutocompleteComponent,
+    MasterDetailComponent,
   ],
   imports: [CommonModule, CvRoutingModule, ReactiveFormsModule],
 })
