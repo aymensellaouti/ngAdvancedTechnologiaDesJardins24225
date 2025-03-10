@@ -30,7 +30,7 @@ export class DetailsCvComponent implements OnInit {
         error: (e) => {
           this.router.navigate([APP_ROUTES.cv]);
         },
-      });
+    });
   }
   deleteCv(cv: Cv) {
     this.cvService.deleteCvById(cv.id).subscribe({

@@ -8,12 +8,13 @@ import { CvService } from '../services/cv.service';
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent {
-  @Input() cv: Cv | null = null;
+  @Input({required: true}) cv!: Cv;
   @Input() size = 50;
   constructor(private cvService: CvService) {}
-  @Output() selectCv = new EventEmitter<Cv>(); 
 
   onSelectCv() {
-    if (this.cv) this.selectCv.emit(this.cv);
+    if (this.cv) {
+      this.cvService.selectCv(this.cv);
+    };
   }
 }

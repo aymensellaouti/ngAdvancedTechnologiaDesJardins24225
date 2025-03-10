@@ -31,10 +31,9 @@ export class CvComponent {
           Veuillez contacter l'admin.`);
       },
     });
+    this.cvService.selectedCv$.subscribe({ next: (cv) => this.selectedCv = cv });
+
     this.logger.logger("je suis le cvComponent");
     this.toastr.info("Bienvenu dans notre CvTech");
-  }
-  onForwardCv(cv: Cv) {
-    this.selectedCv = cv;
   }
 }
