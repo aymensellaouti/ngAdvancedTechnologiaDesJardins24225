@@ -12,20 +12,20 @@ export class AppComponent {
   ngxService = inject(NgxUiLoaderService);
   router = inject(Router);
   constructor() {
-    this.router.events.subscribe({
-      next: (event) => {
-        if (event instanceof NavigationStart) {
-          // lancer le spinner
-          this.ngxService.start();
-        } else if (
-          event instanceof NavigationEnd ||
-          event instanceof NavigationCancel ||
-          event instanceof NavigationError
-        ) {
-          // fermer le spinner
-          this.ngxService.stop();
-        }
-      }
-    })
+    // this.router.events.subscribe({
+    //   next: (event) => {
+    //     if (event instanceof NavigationStart) {
+    //       // lancer le spinner
+    //       this.ngxService.start();
+    //     } else if (
+    //       event instanceof NavigationEnd ||
+    //       event instanceof NavigationCancel ||
+    //       event instanceof NavigationError
+    //     ) {
+    //       // fermer le spinner
+    //       this.ngxService.stop();
+    //     }
+    //   }
+    // })
   }
 }
