@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Todo } from '../model/todo';
 import { LoggerService } from '../../services/logger.service';
+import { UUID_TOKEN } from 'src/app/tokens/uuid.token';
 
 let n = 1;
 
@@ -9,7 +10,10 @@ let n = 1;
 })
 export class TodoService {
   private todos: Todo[] = [];
-  constructor(private loggerService: LoggerService) {}
+  constructor(
+    @Inject(UUID_TOKEN)
+    private uuid: () => string,
+    private loggerService: LoggerService) {}
 
   /**
    * elle retourne la liste des todos
@@ -27,6 +31,7 @@ export class TodoService {
    *
    */
   addTodo(todo: Todo): void {
+    todo.id = this.uuid();
     this.todos.push(todo);
   }
 

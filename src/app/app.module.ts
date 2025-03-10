@@ -51,7 +51,8 @@ import { CONSTANTES } from "src/config/const.config";
 import { FakeCvService } from "./cv/services/fake-cv.service";
 import { Logger2Service } from "./services/logger2.service";
 import { Logger3Service } from "./services/logger3.service";
-
+import { v4 as v4uuid } from 'uuid';
+import { UUID_TOKEN } from "./tokens/uuid.token";
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,6 +123,11 @@ import { Logger3Service } from "./services/logger3.service";
       provide: CvService,
       useClass: CONSTANTES.env === 'development' ? CvService : FakeCvService,
     },
+    {
+      provide: UUID_TOKEN,
+      useValue: v4uuid
+
+    }
     // {
     //   provide: LoggerService,
     //   useClass: LoggerService

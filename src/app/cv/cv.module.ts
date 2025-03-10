@@ -11,6 +11,7 @@ import { ListComponent } from './list/list.component';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { CvCardComponent } from './cv-card/cv-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TodoModule } from '../todo/todo.module';
 
 
 
