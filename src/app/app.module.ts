@@ -49,6 +49,8 @@ import { LoggerService } from "./services/logger.service";
 import { CvService } from "./cv/services/cv.service";
 import { CONSTANTES } from "src/config/const.config";
 import { FakeCvService } from "./cv/services/fake-cv.service";
+import { Logger2Service } from "./services/logger2.service";
+import { Logger3Service } from "./services/logger3.service";
 
 @NgModule({
   declarations: [
@@ -101,6 +103,21 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
   providers: [
     AuthInterceptorProvider,
     LoggerService,
+    {
+      provide: LOGGER_SERVICE_TOKEN,
+      useClass: LoggerService,
+      multi: true,
+    },
+    {
+      provide: LOGGER_SERVICE_TOKEN,
+      useClass: Logger2Service,
+      multi: true,
+    },
+    {
+      provide: LOGGER_SERVICE_TOKEN,
+      useClass: Logger3Service,
+      multi: true,
+    },
     {
       provide: CvService,
       useClass: CONSTANTES.env === 'development' ? CvService : FakeCvService,

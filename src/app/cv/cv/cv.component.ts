@@ -17,10 +17,13 @@ export class CvComponent {
   date = new Date();
 
   constructor(
+    @Inject(LOGGER_SERVICE_TOKEN)
+    private loggers: LoggerService[],
     private logger: LoggerService,
     private toastr: ToastrService,
     private cvService: CvService
   ) {
+    loggers.forEach(logger => logger.logger('cc'));
     this.cvService.getCvs().subscribe({
       next: (cvs) => {
         this.cvs = cvs;
