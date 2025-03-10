@@ -6,6 +6,7 @@ import { CvComponent } from './cv/cv.component';
 import { DetailsCvComponent } from './details-cv/details-cv.component';
 import { APP_ROUTES } from 'src/config/routes.config';
 import { MasterDetailComponent } from './master-detail/master-detail.component';
+import { cvsResolver } from './resolvers/cvs.resolver';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { MasterDetailComponent } from './master-detail/master-detail.component';
           {
             path: '',
             component: CvComponent,
+            resolve: {
+              cvs: cvsResolver
+            }
           },
           {
             path: APP_ROUTES.addCv,

@@ -6,6 +6,7 @@ import { CvService } from "../services/cv.service";
 import { EMPTY, Observable, catchError, of } from "rxjs";
 import { LOGGER_SERVICE_TOKEN } from "src/app/tokens/logger-service.token";
 import { TodoService } from "src/app/todo/service/todo.service";
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-cv",
   templateUrl: "./cv.component.html",
@@ -17,6 +18,7 @@ export class CvComponent {
   /*   selectedCv: Cv | null = null; */
   date = new Date();
   cvService = inject(CvService);
+  acr = inject(ActivatedRoute);
   constructor(
     @Inject(LOGGER_SERVICE_TOKEN)
     private loggers: LoggerService[],
@@ -25,17 +27,18 @@ export class CvComponent {
     private todoService: TodoService,
   ) {
     loggers.forEach(logger => logger.logger('cc'));
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: () => {
-        this.cvs = this.cvService.getFakeCvs();
-        this.toastr.error(`
-          Attention!! Les données sont fictives, problème avec le serveur.
-          Veuillez contacter l'admin.`);
-      },
-    });
+    // this.cvService.getCvs().subscribe({
+    //   next: (cvs) => {
+    //     this.cvs = cvs;
+    //   },
+    //   error: () => {
+    //     this.cvs = this.cvService.getFakeCvs();
+    //     this.toastr.error(`
+    //       Attention!! Les données sont fictives, problème avec le serveur.
+    //       Veuillez contacter l'admin.`);
+    //   },
+    // });
+    this.cvs = this.acr.snapshot.data['cvs'];
     this.cvService.selectedCv$.subscribe({ next: (cv) => this.selectedCv = cv });
 
     this.logger.logger("je suis le cvComponent");
