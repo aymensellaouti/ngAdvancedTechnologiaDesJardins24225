@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { Cv } from "../model/cv";
 import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
 import { CvService } from "../services/cv.service";
 import { EMPTY, Observable, catchError, of } from "rxjs";
+import { LOGGER_SERVICE_TOKEN } from "src/app/tokens/logger-service.token";
 @Component({
   selector: "app-cv",
   templateUrl: "./cv.component.html",

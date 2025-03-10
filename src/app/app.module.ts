@@ -2,7 +2,7 @@ import { NgModule, isDevMode } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 import { ToastrModule } from "ngx-toastr";
 
@@ -43,6 +43,12 @@ import { FromOfComponent } from "./rxjs/from-of/from-of.component";
 import { CvModule } from "./cv/cv.module";
 import { TodoModule } from "./todo/todo.module";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { LOGGER_SERVICE_TOKEN } from "./tokens/logger-service.token";
+import { loggerServiceFactory } from "./factories/logger-service.factory";
+import { LoggerService } from "./services/logger.service";
+import { CvService } from "./cv/services/cv.service";
+import { CONSTANTES } from "src/config/const.config";
+import { FakeCvService } from "./cv/services/fake-cv.service";
 
 @NgModule({
   declarations: [
@@ -85,14 +91,25 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
     AppRoutingModule,
     HttpClientModule,
     NgxUiLoaderModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
+    ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: "registerWhenStable:30000",
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    AuthInterceptorProvider,
+    LoggerService,
+    {
+      provide: CvService,
+      useClass: CONSTANTES.env === 'development' ? CvService : FakeCvService,
+    },
+    // {
+    //   provide: LoggerService,
+    //   useClass: LoggerService
+    // }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
