@@ -9,6 +9,7 @@ import { API } from "../../../config/api.config";
 })
 export class CvService {
   private cvs: Cv[] = [];
+  /** Le flux qui va nous notifier à chaque fois qu'on clique sur un cv */
   private selectCvSubject$ = new Subject<Cv>();
   /** Le flux des cvs sélectionnés */
   selectedCv$ = this.selectCvSubject$.asObservable();
