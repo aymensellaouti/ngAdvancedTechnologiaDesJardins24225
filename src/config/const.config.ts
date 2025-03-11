@@ -1,4 +1,5 @@
 export const CONSTANTES = {
   defaultImage: 'cv.png',
-  env: 'development'
+  env: 'development',
+  addCvForm: 'AddCvForm',
 };

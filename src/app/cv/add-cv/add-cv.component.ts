@@ -10,13 +10,14 @@ import { Cv } from "../model/cv";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { APP_ROUTES } from "src/config/routes.config";
+import { CONSTANTES } from "src/config/const.config";
 
 @Component({
-  selector: "app-add-cv",
-  templateUrl: "./add-cv.component.html",
-  styleUrls: ["./add-cv.component.css"],
+  selector: 'app-add-cv',
+  templateUrl: './add-cv.component.html',
+  styleUrls: ['./add-cv.component.css'],
 })
-export class AddCvComponent {
+export class AddCvComponent implements OnDestroy {
   formBuilder = inject(FormBuilder);
   cvService = inject(CvService);
   toastr = inject(ToastrService);
@@ -25,23 +26,23 @@ export class AddCvComponent {
   form: FormGroup = this.formBuilder.group(
     // Les champs du formulaire
     {
-      name: ["", [Validators.required]],
-      firstname: ["", Validators.required],
-      path: [""],
-      job: ["", Validators.required],
+      name: ['', [Validators.required]],
+      firstname: ['', Validators.required],
+      path: [''],
+      job: ['', Validators.required],
       cin: [
-        "",
+        '',
         {
-          validators: [Validators.required, Validators.pattern("[0-9]{8}")],
+          validators: [Validators.required, Validators.pattern('[0-9]{8}')],
           asyncValidators: [],
-          updateOn: 'blur'
+          updateOn: 'blur',
         },
       ],
       age: [
         0,
         {
           validators: [Validators.required],
-          updateOn: "blur",
+          updateOn: 'blur',
         },
       ],
     },
@@ -49,11 +50,18 @@ export class AddCvComponent {
     {
       validators: [],
       asyncValidators: [],
-      updateOn: "change",
+      updateOn: 'change',
     }
   );
   constructor() {
-
+    const savedForm = localStorage.getItem(CONSTANTES.addCvForm);
+    if (savedForm) {
+      this.form.patchValue(JSON.parse(savedForm));
+    }
+    this.age.valueChanges.subscribe((age) => {
+      if (age < 18) this.path?.disable();
+      else this.path?.enable();
+    });
   }
 
   addCv() {
@@ -63,6 +71,8 @@ export class AddCvComponent {
           `${cv.firstname} ${cv.name} was added successfully`
         );
         this.router.navigate([APP_ROUTES.cv]);
+        localStorage.removeItem(CONSTANTES.addCvForm);
+        this.form.reset();
       },
       error: (err) => {
         this.toastr.error(
@@ -72,22 +82,31 @@ export class AddCvComponent {
     });
   }
 
+  ngOnDestroy(): void {
+    if (this.form.valid) {
+      localStorage.setItem(
+        CONSTANTES.addCvForm,
+        JSON.stringify(this.form.value)
+      )
+    }
+  }
+
   get name(): AbstractControl {
-    return this.form.get("name")!;
+    return this.form.get('name')!;
   }
   get firstname() {
-    return this.form.get("firstname");
+    return this.form.get('firstname');
   }
   get age(): AbstractControl {
-    return this.form.get("age")!;
+    return this.form.get('age')!;
   }
   get job() {
-    return this.form.get("job");
+    return this.form.get('job');
   }
   get path() {
-    return this.form.get("path");
+    return this.form.get('path');
   }
   get cin(): AbstractControl {
-    return this.form.get("cin")!;
+    return this.form.get('cin')!;
   }
 }
