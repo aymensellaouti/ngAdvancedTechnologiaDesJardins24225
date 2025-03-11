@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 import { APP_ROUTES } from "src/config/routes.config";
 import { CONSTANTES } from "src/config/const.config";
 import { uniqueCinValidator } from "../async validators/unique-cin.async-validator";
+import { ageCinValidator } from "../validators/cin-age.validator";
 
 @Component({
   selector: 'app-add-cv',
@@ -48,7 +49,7 @@ export class AddCvComponent implements OnDestroy {
     },
     // Les options du formulaire
     {
-      validators: [],
+      validators: [ageCinValidator],
       asyncValidators: [],
       updateOn: 'change',
     }
@@ -87,7 +88,7 @@ export class AddCvComponent implements OnDestroy {
       localStorage.setItem(
         CONSTANTES.addCvForm,
         JSON.stringify(this.form.value)
-      )
+      );
     }
   }
 
