@@ -23,6 +23,7 @@ export class AddCvComponent {
   router = inject(Router);
 
   form: FormGroup = this.formBuilder.group(
+    // Les champs du formulaire
     {
       name: ["", [Validators.required]],
       firstname: ["", Validators.required],
@@ -33,6 +34,7 @@ export class AddCvComponent {
         {
           validators: [Validators.required, Validators.pattern("[0-9]{8}")],
           asyncValidators: [],
+          updateOn: 'blur'
         },
       ],
       age: [
@@ -43,6 +45,7 @@ export class AddCvComponent {
         },
       ],
     },
+    // Les options du formulaire
     {
       validators: [],
       asyncValidators: [],
@@ -50,11 +53,7 @@ export class AddCvComponent {
     }
   );
   constructor() {
-    this.age.valueChanges.subscribe({
-      next: (age) => {
-        age < 18 ? this.path?.disable() : this.path?.enable();
-      },
-    });
+
   }
 
   addCv() {
