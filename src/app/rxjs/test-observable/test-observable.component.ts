@@ -37,8 +37,9 @@ export class TestObservableComponent {
       // 15 12 9 6 3
       )
       .subscribe({
-        next: (value: number) => {toaster.info('' + value);},
-        complete: () => {toaster.error('BOOM !!!');}
+        next: (value: number) => {this.toaster.info('' + value);},
+        complete: () => {toaster.error('BOOM !!!');},
+        error: (e) => {}
       })
     // }, 3000);
   }
