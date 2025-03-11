@@ -15,7 +15,7 @@ export class HighlightDirective implements OnInit {
   @HostBinding('style.backgroundColor') bgc = this.out;
   constructor(private element: ElementRef) {}
   ngOnInit() {
-    this.bgc = this.out;
+    // this.bgc = this.out;
   }
   @HostListener('mouseenter') onMouseEnter() {
     this.element.nativeElement.innerHTML = 'IN';
