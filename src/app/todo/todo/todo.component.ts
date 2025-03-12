@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Todo } from '../model/todo';
 import { TodoService } from '../service/todo.service';
 
@@ -16,9 +16,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 ],
 })
 export class TodoComponent {
+  private todoService = inject(TodoService);
+
   todos: Todo[] = [];
   todo = new Todo();
-  constructor(private todoService: TodoService) {
+  constructor() {
     this.todos = this.todoService.getTodos();
   }
   addTodo() {
