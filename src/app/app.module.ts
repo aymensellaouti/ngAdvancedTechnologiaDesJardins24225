@@ -52,6 +52,7 @@ import { Logger3Service } from "./services/logger3.service";
 import { v4 as v4uuid } from 'uuid';
 import { UUID_TOKEN } from "./tokens/uuid.token";
 import { UserListElementsComponent } from './optimizationPattern/user-list-elements/user-list-elements.component';
+import { FiboPipe } from './pipes/fibo.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +84,7 @@ import { UserListElementsComponent } from './optimizationPattern/user-list-eleme
     ProductsComponent,
     FromOfComponent,
     UserListElementsComponent,
+    FiboPipe,
   ],
   imports: [
     BrowserModule,
