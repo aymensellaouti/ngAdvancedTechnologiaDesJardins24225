@@ -51,6 +51,7 @@ import { Logger2Service } from "./services/logger2.service";
 import { Logger3Service } from "./services/logger3.service";
 import { v4 as v4uuid } from 'uuid';
 import { UUID_TOKEN } from "./tokens/uuid.token";
+import { UserListElementsComponent } from './optimizationPattern/user-list-elements/user-list-elements.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +82,7 @@ import { UUID_TOKEN } from "./tokens/uuid.token";
     UserListComponent,
     ProductsComponent,
     FromOfComponent,
+    UserListElementsComponent,
   ],
   imports: [
     BrowserModule,
