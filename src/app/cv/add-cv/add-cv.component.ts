@@ -1,20 +1,18 @@
 import { Component, inject, OnDestroy } from "@angular/core";
-import {
-  FormBuilder,
-  Validators,
-  AbstractControl,
-  FormGroup,
-} from "@angular/forms";
+import { FormBuilder, Validators, AbstractControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { CvService } from "../services/cv.service";
 import { Cv } from "../model/cv";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { APP_ROUTES } from "src/config/routes.config";
+import { NgIf } from "@angular/common";
 
 @Component({
-  selector: "app-add-cv",
-  templateUrl: "./add-cv.component.html",
-  styleUrls: ["./add-cv.component.css"],
+    selector: "app-add-cv",
+    templateUrl: "./add-cv.component.html",
+    styleUrls: ["./add-cv.component.css"],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgIf],
 })
 export class AddCvComponent {
   formBuilder = inject(FormBuilder);

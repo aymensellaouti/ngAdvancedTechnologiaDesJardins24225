@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-test-form',
-  templateUrl: './test-form.component.html',
-  styleUrls: ['./test-form.component.css']
+    selector: 'app-test-form',
+    templateUrl: './test-form.component.html',
+    styleUrls: ['./test-form.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, FormsModule]
 })
 export class TestFormComponent {
   processForm(form: NgForm) {

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-card-profil',
-  templateUrl: './card-profil.component.html',
-  styleUrls: ['./card-profil.component.css'],
+    selector: 'app-card-profil',
+    templateUrl: './card-profil.component.html',
+    styleUrls: ['./card-profil.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, FormsModule],
 })
 export class CardProfilComponent {
   name = 'sellaouti';

@@ -15,17 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    ItemComponent,
-    DetailsCvComponent,
-    CvCardComponent,
-    AddCvComponent,
-    CvComponent,
-    EmbaucheComponent,
-    DefaultImagePipe,
-    AutocompleteComponent,
-  ],
-  imports: [CommonModule, CvRoutingModule, ReactiveFormsModule],
+    imports: [CommonModule, CvRoutingModule, ReactiveFormsModule, ListComponent,
+        ItemComponent,
+        DetailsCvComponent,
+        CvCardComponent,
+        AddCvComponent,
+        CvComponent,
+        EmbaucheComponent,
+        DefaultImagePipe,
+        AutocompleteComponent],
 })
 export class CvModule {}
