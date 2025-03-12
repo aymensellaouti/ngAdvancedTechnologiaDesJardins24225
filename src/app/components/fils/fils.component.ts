@@ -1,10 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-fils',
   templateUrl: './fils.component.html',
   styleUrls: ['./fils.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilsComponent {
+  @Input() name = "";
+  @Input({required: true}) user!: any ;
   /**
    *
    * Create event
