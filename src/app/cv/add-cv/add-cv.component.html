@@ -2,12 +2,13 @@
 <form [formGroup]="form">
   Name:
   <input type="text" class="form-control" formControlName="name" />
-  <div
-    *ngIf="form.get('name')?.errors && form.get('name')?.touched"
-    class="alert alert-danger"
-  >
-    Ce champ est obligatoire
-  </div>
+  @if (form.get('name')?.errors && form.get('name')?.touched) {
+    <div
+      class="alert alert-danger"
+      >
+      Ce champ est obligatoire
+    </div>
+  }
   Firstname:
   <input type="text" class="form-control" formControlName="firstname" /> Age:
   <input type="text" class="form-control" formControlName="age" /> Cin:

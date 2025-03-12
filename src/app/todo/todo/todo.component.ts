@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Todo } from '../model/todo';
 import { TodoService } from '../service/todo.service';
-import { NgFor } from '@angular/common';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,10 +11,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     providers: [TodoService],
     standalone: true,
     imports: [
-        NgFor,
-        ReactiveFormsModule,
-        FormsModule,
-    ],
+    ReactiveFormsModule,
+    FormsModule
+],
 })
 export class TodoComponent {
   todos: Todo[] = [];

@@ -22,7 +22,8 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(
           BrowserModule, FormsModule, // required animations module
           ToastrModule.forRoot(), // ToastrModule added
-          CvModule, TodoModule, AppRoutingModule, NgxUiLoaderModule, ServiceWorkerModule.register("ngsw-worker.js", {
+          CvModule, TodoModule,
+          AppRoutingModule, NgxUiLoaderModule, ServiceWorkerModule.register("ngsw-worker.js", {
             enabled: !isDevMode(),
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).

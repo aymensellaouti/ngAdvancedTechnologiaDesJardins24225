@@ -5,14 +5,14 @@ import { Cv } from "../model/cv";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { APP_ROUTES } from "src/config/routes.config";
-import { NgIf } from "@angular/common";
+
 
 @Component({
     selector: "app-add-cv",
     templateUrl: "./add-cv.component.html",
     styleUrls: ["./add-cv.component.css"],
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf],
+    imports: [ReactiveFormsModule],
 })
 export class AddCvComponent {
   formBuilder = inject(FormBuilder);
