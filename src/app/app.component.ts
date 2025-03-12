@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ApplicationRef, Component, inject } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'Starting Advanced Topics';
   ngxService = inject(NgxUiLoaderService);
   router = inject(Router);
+  appRef = inject(ApplicationRef);
   constructor() {
     // this.router.events.subscribe({
     //   next: (event) => {
