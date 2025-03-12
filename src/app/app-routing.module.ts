@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Route, PreloadAllModules } from "@angular/router";
-import { TodoComponent } from "./todo/todo/todo.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
 import { FrontComponent } from "./templates/front/front.component";
@@ -13,6 +12,7 @@ import { TestObservableComponent } from "./rxjs/test-observable/test-observable.
 import { SliderComponent } from "./rxjs/slider/slider.component";
 import { ProductsComponent } from "./products/products.component";
 import { APP_ROUTES } from "src/config/routes.config";
+import { CustomPreloadingStrategy } from "./preloading strategy/custom.preloading-strategy";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -51,7 +51,7 @@ const routes: Route[] = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-      preloadingStrategy: PreloadAllModules
+      preloadingStrategy: CustomPreloadingStrategy
     }
     // {enableTracing: true}
   )],
