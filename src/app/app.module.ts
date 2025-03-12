@@ -43,6 +43,8 @@ import { FromOfComponent } from "./rxjs/from-of/from-of.component";
 import { CvModule } from "./cv/cv.module";
 import { TodoModule } from "./todo/todo.module";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { FirstSignalComponent } from "./signal/first-signal/first-signal.component";
+import { TtcComponent } from "./signal/ttc/ttc.component";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -73,6 +75,8 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
         UserListComponent,
         ProductsComponent,
         FromOfComponent,
+        FirstSignalComponent,
+        TtcComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         FormsModule,
