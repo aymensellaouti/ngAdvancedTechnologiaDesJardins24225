@@ -2,7 +2,7 @@ import { NgModule, isDevMode } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 import { ToastrModule } from "ngx-toastr";
 
@@ -40,11 +40,9 @@ import { ProductsComponent } from "./products/products.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { SliderComponent } from "./rxjs/slider/slider.component";
 import { FromOfComponent } from "./rxjs/from-of/from-of.component";
-import { CvModule } from "./cv/cv.module";
-import { TodoModule } from "./todo/todo.module";
+
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { LOGGER_SERVICE_TOKEN } from "./tokens/logger-service.token";
-import { loggerServiceFactory } from "./factories/logger-service.factory";
 import { LoggerService } from "./services/logger.service";
 import { CvService } from "./cv/services/cv.service";
 import { CONSTANTES } from "src/config/const.config";
@@ -89,8 +87,6 @@ import { UUID_TOKEN } from "./tokens/uuid.token";
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    CvModule,
-    TodoModule,
     AppRoutingModule,
     HttpClientModule,
     NgxUiLoaderModule,

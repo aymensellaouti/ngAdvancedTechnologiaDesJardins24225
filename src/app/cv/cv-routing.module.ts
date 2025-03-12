@@ -11,10 +11,6 @@ import { cvsResolver } from './resolvers/cvs.resolver';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      {
-        //'cv':
-        path: APP_ROUTES.cv,
-        children: [
           {
             path: '',
             component: CvComponent,
@@ -33,8 +29,6 @@ import { cvsResolver } from './resolvers/cvs.resolver';
             children: [{path: ':id', component: DetailsCvComponent}]
           },
           { path: APP_ROUTES.detailsCv, component: DetailsCvComponent },
-        ],
-      },
     ]),
   ],
   exports: [RouterModule],

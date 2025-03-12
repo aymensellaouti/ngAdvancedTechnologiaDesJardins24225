@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Route } from "@angular/router";
+import { RouterModule, Route, PreloadAllModules } from "@angular/router";
 import { TodoComponent } from "./todo/todo/todo.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
@@ -12,6 +12,7 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { TestObservableComponent } from "./rxjs/test-observable/test-observable.component";
 import { SliderComponent } from "./rxjs/slider/slider.component";
 import { ProductsComponent } from "./products/products.component";
+import { APP_ROUTES } from "src/config/routes.config";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -20,7 +21,19 @@ const routes: Route[] = [
     path: '',
     component: FrontComponent,
     children: [
-      { path: 'todo', component: TodoComponent },
+      {
+        path: APP_ROUTES.todo,
+        loadChildren: () =>
+          import('./todo/todo.module').then((m) => m.TodoModule),
+      },
+      {
+        path: APP_ROUTES.cv,
+        loadChildren: () =>
+          import('./cv/cv.module'),
+        data: {
+          preload: true
+        }
+      },
       { path: 'products', component: ProductsComponent },
       { path: 'word', component: MiniWordComponent },
       { path: 'rxjs', component: TestObservableComponent },
@@ -37,6 +50,9 @@ const routes: Route[] = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,
+    {
+      preloadingStrategy: PreloadAllModules
+    }
     // {enableTracing: true}
   )],
   exports: [RouterModule],

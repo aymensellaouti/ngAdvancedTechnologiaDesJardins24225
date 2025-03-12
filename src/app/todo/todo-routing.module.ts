@@ -7,7 +7,7 @@ import { APP_ROUTES } from "src/config/routes.config";
   imports: [
     RouterModule.forChild([
       {
-        path: APP_ROUTES.todo,
+        path: '',
         component: TodoComponent,
       },
     ])],
